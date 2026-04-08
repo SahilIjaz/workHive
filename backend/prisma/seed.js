@@ -9,6 +9,7 @@ async function main() {
   // Hash password for admin user
   const passwordHash = await bcrypt.hash('Admin123!', 12);
 
+  
   // Create first tenant (Acme Corp)
   const acmeTenant = await prisma.tenant.upsert({
     where: { slug: 'acme' },
