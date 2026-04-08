@@ -20,6 +20,7 @@ async function main() {
     },
   });
 
+  
   console.log(`✓ Created tenant: ${acmeTenant.name}`);
 
   // Create admin user for Acme
