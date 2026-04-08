@@ -38,41 +38,54 @@ Multi_Tenant/
 ### Prerequisites
 
 - Node.js 18+ and npm
-- PostgreSQL 15+
+- Docker and Docker Compose
 - Git
 
-### Setup
+### Quick Start
 
-1. **Clone and navigate to project**
+1. **Navigate to project**
    ```bash
    cd /Users/sahilijaz/Desktop/projects-Ai-related/Multi_Tenant
    ```
 
-2. **Backend setup**
+2. **Start PostgreSQL database**
+   ```bash
+   docker-compose up -d
+   ```
+
+3. **Backend setup**
    ```bash
    cd backend
    npm install
-   cp .env.example .env          # Update DATABASE_URL if needed
-   npm run db:generate
-   npm run db:migrate            # Create database tables
-   npm run db:seed               # (Optional) Add sample data
+   npx prisma db push            # Sync schema to database
+   npm run db:seed               # Add sample data
+   npm run dev                   # Start on http://localhost:3001
    ```
 
-3. **Frontend setup**
+4. **Frontend setup** (in a new terminal)
    ```bash
-   cd ../frontend
+   cd frontend
    npm install
-   cp .env.local.example .env.local  # Update API URL if needed
+   npm run dev                   # Start on http://localhost:3000
    ```
 
-4. **Start development servers**
-   - Backend: `cd backend && npm run dev` (runs on http://localhost:3001)
-   - Frontend: `cd frontend && npm run dev` (runs on http://localhost:3000)
+**Test the app:**
+- Open http://localhost:3000
+- Login with: `alice@acme.com` / `Admin123!`
+- Or register a new organization
+
+### Detailed Database Setup
+
+See [DATABASE_SETUP.md](./DATABASE_SETUP.md) for:
+- Database schema documentation
+- Prisma Studio (visual database editor)
+- Troubleshooting steps
+- Sample credentials
 
 ## Development Phases
 
 - **Phase 1** ✓ Project scaffolding (directories, packages, config)
-- **Phase 2** Database schema & migrations (Prisma setup)
+- **Phase 2** ✓ Database schema & migrations (Prisma setup, seed data)
 - **Phase 3** Authentication (JWT, middleware, register/login)
 - **Phase 4** Core API (Users, Projects, Tasks with tenantId scoping)
 - **Phase 5** Frontend (Auth pages, dashboard, Kanban board)

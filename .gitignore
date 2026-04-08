@@ -9,3 +9,6 @@ dist/
 .turbo/
 build/
 out/
+
+# Docker
+postgres_data/
