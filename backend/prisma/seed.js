@@ -20,9 +20,10 @@ async function main() {
     },
   });
 
-  
+
   console.log(`✓ Created tenant: ${acmeTenant.name}`);
 
+  
   // Create admin user for Acme
   const adminUser = await prisma.user.upsert({
     where: { tenantId_email: { tenantId: acmeTenant.id, email: 'alice@acme.com' } },
