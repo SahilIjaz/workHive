@@ -118,6 +118,7 @@ async function main() {
       priority: 'medium',
     },
   });
+
   
 
   console.log(`✓ Created 3 sample tasks`);
