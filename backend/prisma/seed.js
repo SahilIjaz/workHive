@@ -120,7 +120,6 @@ async function main() {
   });
 
   console.log(`✓ Created 3 sample tasks`);
-
   // Create second tenant for multi-tenant testing
   const betaTenant = await prisma.tenant.upsert({
     where: { slug: 'beta-corp' },
